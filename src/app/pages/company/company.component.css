@@ -1,0 +1,48 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  max-width: 1000px;
+  margin-left: 790px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.element-row {
+  position: relative;
+}
+
+
+.title {
+  font-family: 'Exo 2', sans-serif;
+}
+
+.title{
+  font-size: 60px;
+}
+
+.subclass{
+  font-size: 25px;
+  font-weight: 10;
+}
+
+.companyDetails{
+  /* align-content: center; */
+  text-align: center;
+}
+
+.topRow{
+  margin-left: 920px;
+  display: inline-block;
+}
+.filterText {
+  text-align: center;
+}
+.filterBox{
+  margin-left: 50px;
+  width: 600px;
+
+}

@@ -1,0 +1,48 @@
+table {
+  overflow: auto;
+  max-height: 500px;
+
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.example-container {
+  min-width: 100px;
+  max-width: 1500px;
+  margin-left: 500px;
+}
+.topRow{
+  margin-left: 600px;
+  display: inline-block;
+}
+.filterText {
+  text-align: center;
+}
+.filterBox{
+  margin-left: 370px;
+  width: 600px;
+
+}
+
+.image{
+  margin-left: 1140px;
+  bottom: 40px;
+  position: relative;
+}
+h2{
+text-align: center;
+font-size: 25px;
+
+}
+.email{
+  font-family: 'Exo 2', sans-serif;
+font-family: 'Poppins', sans-serif;
+}
+.name{
+  font-size: 30px;
+}
+
+

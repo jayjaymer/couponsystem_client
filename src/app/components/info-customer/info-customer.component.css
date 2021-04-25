@@ -1,0 +1,33 @@
+.top{
+  align-content: center;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.title{
+font-family: 'Patua One', cursive;
+font-size: 38px;
+
+}
+
+
+.coupons{
+border:1px solid #dfdfdf;
+padding:10px;
+border-radius: 10px;
+-webkit-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.35);
+-moz-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.35);
+box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.35);
+}
+
+.coupon{
+  padding-bottom: 10px;
+border-bottom: 1px solid #dfdfdf;
+padding-top: 10px;
+
+
+}
+
+span{
+  margin-right: 10px;
+}

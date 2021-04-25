@@ -1,0 +1,69 @@
+
+<form #user="ngForm" *ngIf="company">
+  <button mat-icon-button mat-flat-button mat-dialog-close class="exit">
+     <span class="material-icons"> clear
+    </span>
+  </button>
+
+
+    <h1 mat-dialog-title style="font-size: x-large; font-weight: bold; ">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
+      Create New Company
+    </h1>
+
+    <hr>
+
+    <div class="createCompanyDialog">
+
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Ex. google@gmail.com" required #email="ngModel" [(ngModel)]="company.email" name="email">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field >
+        <input matInput  type="text" placeholder="Ex. Lexus"  required #name="ngModel" [(ngModel)]="company.name" name="name">
+        <mat-label>Company Name</mat-label>
+        <mat-hint>Company name is Unchangeable!!</mat-hint>
+      </mat-form-field>
+
+
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput required #password="ngModel" minlength="5"  [type]="hide ? 'password' : 'text'" type="text" placeholder="Ex. 123" [(ngModel)]="company.password" name="password">
+        <button class="hideIcon"  mat-icon-button  (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" matSuffix>
+          <mat-icon  >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-hint>Atleast 5 numbers</mat-hint>
+
+      </mat-form-field>
+
+
+
+
+
+      <div class="buttons">
+        <button class="closeButton" mat-stroked-button mat-dialog-close>Cancel</button>
+
+        <ng-container *ngIf="user.invalid; else elseTemplate">
+          <button mat-button class="adddbtn" [disabled]="!user.valid">Add</button>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <button class="addButton" color="warn" mat-flat-button  [mat-dialog-close]="true" type="submit" (click)="addCompany()" >Add</button>
+        </ng-template>
+
+
+      </div>
+
+
+
+    </div>
+
+
+</form>
+
+
+
+

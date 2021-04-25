@@ -1,0 +1,10 @@
+$ FIX the filter on tha table
+$ MAKE A  generic dialog for yes no
+$ MAKE A  generic dialog form for add/update
+$ improve login
+$ fix token
+$ put guards for login
+$ side bar????
+$ contact me
+$ signup dialog
+$ add login image and dialog

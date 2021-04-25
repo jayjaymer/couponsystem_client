@@ -1,0 +1,30 @@
+<div class="dialog" *ngIf="company">
+
+  <div class="top">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+    <img src="../../../assets/images/1200px-User_font_awesome.svg.png" class="image" width="130" height="130" >
+    <h2 class="title"> {{company.name}} </h2>
+    <h1 class="subclass"> {{company.email}}</h1>
+  </div>
+
+
+  <div class="coupons">
+    <div *ngFor="let item of coupons" class="coupon">
+      <span> {{item.id}}</span>
+      <span> {{item.companyID}}</span>
+      <span> {{item.title}}</span>
+      <span> {{item.startDate | date }}</span>
+      <span> {{item.endDate | date}}</span>
+      <span> {{item.amount }}</span>
+      <span> {{item.category}}</span>
+      <span> {{item.description}}</span>
+      <span> {{item.price}}</span>
+      <span> {{item.image}}</span>
+  </div>
+
+</div>
+
+
+
+</div>
+

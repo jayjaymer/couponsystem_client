@@ -1,0 +1,65 @@
+
+
+  <div class="customerPage" *ngIf="customer"  >
+<div class="customerDetails">
+    <img src="../../../assets/images/kisspng-symbol-monochrome-painting-black-and-white-televis-hummer-5abc2cb4146498.7708842815222816520835.png" class="image" width="240" height="240" >
+        <h2 class="name">{{customer.firstName}} {{customer.lastName}}</h2>
+        <h2 class="email">{{customer.email}}</h2>
+
+</div>
+
+  <div class="table">
+
+    <div class="topRow">
+      <mat-form-field class="filterBox">
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilterCoupons($event)" placeholder="Ex. 123" #input>
+      </mat-form-field>
+    </div>
+
+  <div class="example-container">
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSourceCoupon" matSort >
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+      </ng-container>
+
+
+
+      <mat-header-row *matHeaderRowDef="couponsColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: couponsColumns;"></mat-row>
+
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.values}}"</td>
+              </tr>
+    </mat-table>
+
+  </div>
+
+  </div>
+
+
+
+  </div>

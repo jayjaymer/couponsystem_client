@@ -1,0 +1,41 @@
+.createCompanyDialog{
+  margin-left: 83px;
+  margin-top: 30px;
+
+}
+
+h1{
+  margin-left: 40px;
+  margin-top: 40px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mat-form-field{
+margin: 5px;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.exit, h1{
+  display: inline-block;
+}
+.exit{
+  left: 360px;
+  bottom: 55px;
+}
+
+.buttons{
+  margin-top: 20px;
+  margin-left: 25px;
+}
+
+.updateButton{
+  background: linear-gradient(
+    hsl(50 20% 10%),
+    hsl(110 100% 5%)
+  );
+  margin-left: 20px;
+}
+

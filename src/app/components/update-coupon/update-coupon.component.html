@@ -1,0 +1,102 @@
+<form #couponForm="ngForm" *ngIf="coupon">
+  <div class="top">
+
+    <button mat-icon-button mat-flat-button mat-dialog-close class="exit">
+      <span class="material-icons"> clear
+     </span>
+   </button>
+  <img src="../../../assets/images/ee0871a55fed30d5d90e071f64fcd4ea.jpg" class="image" width="140" height="140" >
+
+  </div>
+
+ <h1 mat-dialog-title style="font-size: 30px; font-weight: bold; ">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
+  Update Coupon
+</h1>
+
+<hr>
+<div class="createCouponDialog" >
+
+  <mat-form-field class="example-form-field">
+    <mat-label> Title</mat-label>
+    <input matInput #title="ngModel" type="text"  placeholder="BMW 10% off" [(ngModel)]="coupon.title" name="title" required (keydown)="onChangeEvent($event)">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <br>
+
+    <mat-form-field appearance="standard" class="category">
+      <mat-label >Select Category</mat-label>
+      <mat-select #type_input="ngModel" name="category" disableRipple required [(ngModel)]="coupon.category" (keydown)="onChangeEvent($event)">
+        <mat-option value="CARS">Cars</mat-option>
+        <mat-option value="RESTAURANTS">Resturants</mat-option>
+        <mat-option value="ESPORTS">Esports</mat-option>
+        <mat-option value="VACATION">Vacation</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  <div style="font-size: 12px">
+
+
+    <mat-form-field appearance="standard" class="amount">
+        <mat-label>Amount</mat-label>
+        <input matInput #amount="ngModel" type="number" [(ngModel)]="coupon.amount" name="amount" required  (keydown)="onChangeEvent($event)">
+      </mat-form-field>
+
+      <mat-form-field appearance="standard" class="price" >
+        <mat-label>Price</mat-label>
+        <span matPrefix>$&nbsp;</span>
+        <input matInput #price="ngModel" name="price"  [(ngModel)]="coupon.price" required (keydown)="onChangeEvent($event)">
+      </mat-form-field>
+      <br>
+
+  </div>
+
+  <mat-form-field class="description">
+    <mat-label>Description</mat-label>
+    <input matInput #message #desc="ngModel" maxlength="125" placeholder="Ex. 50% off On Microwave.." name="description"  [(ngModel)]="coupon.description" required (keydown)="onChangeEvent($event)">
+    <mat-hint align="end">{{message.value.length}} / 125</mat-hint>
+  </mat-form-field>
+<br>
+
+  <mat-form-field class="startDate" appearance="standard">
+    <mat-label >Start date</mat-label>
+    <input matInput #startDate="ngModel" [matDatepicker]="picker" name="startDate"  [(ngModel)]="coupon.startDate" required (keydown)="onChangeEvent($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker></mat-datepicker>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field class="endDate" appearance="standard">
+    <mat-label>End date</mat-label>
+    <input matInput #endDate="ngModel" [matDatepicker]="picker1" style="background-color: transparent;" name="endDate"  [(ngModel)]="coupon.endDate" required (keydown)="onChangeEvent($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker1></mat-datepicker>
+  </mat-form-field>
+<br>
+
+<form action="/action_page.php">
+  <input type="file" id="myfile" name="myfile" class="myfile">
+</form>
+
+</div>
+
+<div class="buttons">
+  <button class="closeButton" mat-stroked-button mat-dialog-close>Cancel</button>
+
+  <ng-container *ngIf="title.dirty || title.invalid || type_input.invalid || type_input.dirty ||
+   amount.invalid|| amount.dirty || price.invalid|| price.dirty || desc.invalid|| desc.dirty || startDate.invalid || startDate.dirty || endDate.invalid || endDate.dirty; else elseTemplate">
+    <button class="updateButton" color="warn" mat-flat-button  [mat-dialog-close]="true" type="submit" (click)="onSubmit()"  [disabled]="!couponForm.valid">Update</button>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <button mat-button class="updatebtn" [disabled]="couponForm.valid">Update</button>
+
+  </ng-template>
+
+
+
+</div>
+
+
+</form>

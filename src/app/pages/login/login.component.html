@@ -1,0 +1,60 @@
+
+  <mat-card class="example-card" >
+    <form #userForm="ngForm">
+      <mat-card-header class="header">
+        <h1  mat-card-title class="head" style="font-size: x-large; font-weight: bold; ">
+          <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
+          Login
+        </h1>
+      </mat-card-header>
+      <br>
+      <mat-divider></mat-divider>
+      <mat-card-content class="form">
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" matInput #email_input="ngModel" type="text" class="form-control" required placeholder="Email Address" id="email" name="email" [(ngModel)]="email" />
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput #password_input="ngModel" minlength="5"type="password" class="form-control" required placeholder="Password" id="password" name="password" [(ngModel)]="password"/><br>
+        </mat-form-field>
+
+
+
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label *ngIf="type_input.touched && type_input.errors?.required">Choose type</mat-label>
+          <mat-select #type_input="ngModel" name="type" disableRipple required [(ngModel)]="type">
+            <mat-option value="admin">Admin</mat-option>
+            <mat-option value="customer">Customer</mat-option>
+            <mat-option value="company">Company</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-checkbox class="example-margin">Remember me!</mat-checkbox>
+
+        <br><br>
+
+        <ng-container class="login" *ngIf="userForm.invalid; else elseTemplate">
+          <button mat-button class="adddbtn" [disabled]="!userForm.valid">Login</button>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <button mat-flat-button color="primary" (click)="login()" type="submit"  >Login</button>
+        </ng-template>
+
+      </mat-card-content>
+
+
+    </form>
+    <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
+    <!-- <hr> -->
+    <!-- <p>{{"{\n"+"email: " +email +",\n"+"password: "+ password +",\n"+"type:"+ type  +"}"}}</p> -->
+  </mat-card>
+
+
+
+
+

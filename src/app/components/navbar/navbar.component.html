@@ -1,0 +1,32 @@
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="example-toolbar">
+
+      <mat-icon style="color: antiquewhite; font-size: 30px; margin-left: 100px; display: inline;" ria-hidden="true" >store</mat-icon>
+
+      <button mat-button class="couponology" style="color: aliceblue; " [routerLink]="['/home']" routerLinkActive="router-link-active" >
+        CouponologY</button>
+
+        <button mat-icon-button *ngIf="securityService.isAdmin()" style="background-color: transparent;" [routerLink]="['/admin']" routerLinkActive="router-link-active" style="height: 30px; left: 30px;">
+          <mat-icon style="color: white;">perm_identity</mat-icon>
+        </button>
+
+        <button mat-icon-button *ngIf="securityService.isCompany()" style="background-color: transparent;" [routerLink]="['/company']" routerLinkActive="router-link-active" style="height: 30px; left: 40px;">
+          <mat-icon style="color: white;">perm_identity</mat-icon>
+        </button>
+
+        <button mat-icon-button *ngIf="securityService.isCustomer()" style="background-color: transparent;" [routerLink]="['/customer']" routerLinkActive="router-link-active" style="height: 30px; left: 50px;">
+          <mat-icon style="color: white;">perm_identity</mat-icon>
+        </button>
+        <ng-container *ngIf="isLoggedIn(); else elseTemplate">
+          <button  (click)="isLogged()" mat-flat-button color="warn" class="logout" [routerLink]="['/home']" routerLinkActive="router-link-active">Logout</button>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <button mat-flat-button color="warn" class="login" [routerLink]="['/login']" routerLinkActive="router-link-active" >
+            Login
+          </button>
+
+        </ng-template>
+
+
+  </mat-toolbar>

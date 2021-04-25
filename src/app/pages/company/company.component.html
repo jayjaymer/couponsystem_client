@@ -1,0 +1,109 @@
+<div class="companyPage" *ngIf="company">
+
+  <div class="companyDetails">
+    <img src="../../../assets/images/company.png" class="image" width="240" height="240" >
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap" rel="stylesheet">
+    <h2 class="title"> {{company.name}} </h2>
+
+    <h2 class="subclass"> {{company.email}}</h2>
+  </div>
+
+
+
+  <div class="topRow">
+    <button mat-icon-button class="addMenu" [matMenuTriggerFor]="menu">
+      <mat-icon class="iconbox"> add_box</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openAddCouponDialog()">
+        <mat-icon>local_offer</mat-icon>
+        <span a-rou>Add Coupon</span>
+      </button>
+    </mat-menu>
+
+    <mat-form-field class="filterBox">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilterCoupons($event)" placeholder="Ex. 123" #input>
+    </mat-form-field>
+  </div>
+
+
+<div class="example-container">
+  <mat-table  [dataSource]="dataSourceCoupon" class="mat-elevation-z8" matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+    <!-- Weight Column -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Amount </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    </ng-container>
+
+     <!-- Action Column -->
+     <ng-container matColumnDef="action">
+      <mat-header-cell  *matHeaderCellDef > </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="openUpdateCouponDialog(row)" >
+            <mat-icon>sync_alt</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="deleteCoupon(row.id)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+          <button mat-menu-item (click)="openInfoCouponDialog(row.id)" >
+
+            <mat-icon>info</mat-icon>
+            <span>Info</span>
+          </button>
+        </mat-menu>
+
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="couponsColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: couponsColumns;"
+            matRipple
+            class="element-row"
+            (click)="expandedElement = row"></mat-row>
+
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.values}}"</td>
+            </tr>
+  </mat-table>
+</div>
+
+
+
+
+
+
+</div>

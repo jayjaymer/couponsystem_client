@@ -1,0 +1,97 @@
+iframe{
+  position: relative;
+  margin-left: 1030px;
+}
+.example-card {
+  width: 400px;
+  align-content: center;
+}
+
+
+.coupons{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  justify-items: center;
+  gap: 5rem 1rem;
+
+}
+
+.mat-card-content{
+  text-align: center;
+  margin: 1px;
+
+}
+
+
+.mat-card-header{
+  text-align: center;
+    top: 50%;
+    left: 50%;
+
+}
+.mat-card-title{
+  font-family: 'Exo 2', sans-serif;
+font-family: 'Poppins', sans-serif;
+}
+.mat-card-subtitle{
+  font-family: 'Exo 2', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
+}
+.desc{
+  font-family: 'Exo 2', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,800);
+
+*, *:before, *:after{
+  font: 300 1em/1.5 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  text-decoration: none;
+  color: #0f2200;
+
+}
+.container{
+  margin-left: 90px;
+
+}
+
+
+
+    button:hover{cursor: pointer}
+    button {
+      background: transparent; outline: none;
+      position: relative;
+      border: 2px solid #0f2200;
+      padding: 9px 70px;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    /*button:before (attr data-hover)*/
+    button:hover:before{opacity: 1; transform: translate(0,0);}
+    button:before{
+      content: attr(data-hover);
+      position: absolute;
+      top: 1.1em; left: 0;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 800;
+      font-size: .8em;
+      opacity: 0;
+      transform: translate(-100%,0);
+      transition: all .3s ease-in-out;
+    }
+      /*button div (button text before hover)*/
+      button:hover div{opacity: 0; transform: translate(100%,0)}
+      button div{
+
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 800;
+        font-size: .8em;
+        transition: all .3s ease-in-out;
+      }

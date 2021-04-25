@@ -1,0 +1,84 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -7px;
+  bottom: 6.5%;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+
+}
+.example-toolbar{
+
+    background: linear-gradient(
+      to right,
+      hsl(110 100% 5%),
+      hsl(50 50% 10%)
+    );
+
+
+
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+ .example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+  background-color: #ffffff;
+}
+
+ .example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+fake-route-view {
+  flex: 1;
+}
+
+.couponology{
+  font-size: large;
+  margin-left: 1px;
+  margin-top: 10px;
+
+}
+
+.login{
+  left: 80%;
+  border: 2px solid rgb(255, 255, 255);
+  background: linear-gradient(
+
+    hsl(50 20% 10%),
+    hsl(110 100% 5%)
+  );
+
+}
+
+.side{
+  background-color: #f2f2f2;
+}
+mat-sidenav {
+  width: 200px;
+}
+
+.logout{
+  left: 80%;
+   background: linear-gradient(
+
+    hsl(50 80% 10%),
+    hsl(110 80% 5%)
+  );
+  border: 0.5px solid rgb(255, 255, 255);
+
+}

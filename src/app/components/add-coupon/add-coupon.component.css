@@ -1,0 +1,68 @@
+h1{
+  margin-left: 190px;
+  font-family: 'Open Sans', sans-serif;
+}
+.exit, h1 {
+  display: inline-block;
+}
+.exit{
+  left: 360px;
+  bottom: 130px;
+}
+
+.description{
+  width: 50%;
+}
+
+.image{
+  margin-right: 20px;
+}
+
+.top{
+  align-content: center;
+  text-align: center;
+}
+
+.createCouponDialog{
+  margin-left: 180px;
+  margin-top: 30px;
+
+}
+.startDate{
+  width: 120px;
+
+}
+.endDate{
+  width: 120px;
+
+}
+.amount{
+  width: 80px;
+
+}
+.price{
+  width: 80px;
+  margin-left: 42px;
+}
+
+.myfile{
+margin-top: 10px;
+}
+
+.category{
+  width: 50%;
+}
+
+.buttons{
+  margin-top: 30px;
+  margin-left: 190px;
+}
+.addButton{
+  background: linear-gradient(
+    hsl(50 20% 10%),
+    hsl(110 100% 5%)
+  );
+  margin-left: 30px;
+
+}
+

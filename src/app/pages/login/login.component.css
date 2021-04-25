@@ -1,0 +1,28 @@
+
+.example-card {
+  max-width: 500px;
+  height: 600px;
+  margin-left: 1000px;
+}
+.head{
+  margin-left: 200px;
+  margin-top: 40px;
+}
+
+.form{
+  margin-left: 130px;
+  margin-top: 100px;
+}
+
+
+::ng-deep .mat-form-field {
+  font-size: 12px;
+  width: 65%;
+}
+button{
+  margin-left: 70px;
+  margin-top: 10px;
+}
+.example-margin{
+  margin-left: 50px;
+}

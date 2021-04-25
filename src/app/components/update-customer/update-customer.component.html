@@ -1,0 +1,74 @@
+
+<form #userForm="ngForm" *ngIf="customer">
+  <button mat-icon-button mat-flat-button mat-dialog-close class="exit">
+     <span class="material-icons"> clear
+    </span>
+  </button>
+
+
+    <h1 mat-dialog-title style="font-size: x-large; font-weight: bold;">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
+      Update Customer
+    </h1>
+
+    <hr>
+
+    <div class="createCustomerDialog">
+
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Ex. 123@gmail.com" required #email="ngModel" [(ngModel)]="customer.email" name="email" (keydown)="onChangeEvent($event)">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field >
+        <input matInput  type="text" placeholder="Ex. Jay" required #firstName="ngModel" [(ngModel)]="customer.firstName" name="firstName" (keydown)="onChangeEvent($event)">
+        <mat-label>First Name</mat-label>
+      </mat-form-field>
+
+
+      <br>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput  type="text" placeholder="Ex. Cohen" required  #lastName="ngModel" [(ngModel)]="customer.lastName" name="lastName" (keydown)="onChangeEvent($event)">
+      </mat-form-field>
+      <br>
+
+
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput required #password="ngModel" minlength="5"  [type]="hide ? 'password' : 'text'" type="text" placeholder="Ex. 123" [(ngModel)]="customer.password" name="password">
+        <button class="hideIcon"  mat-icon-button  (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" matSuffix>
+          <mat-icon  >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-hint>Atleast 5 numbers</mat-hint>
+
+      </mat-form-field>
+
+
+
+
+
+      <div class="buttons">
+        <button class="closeButton" mat-stroked-button mat-dialog-close>Cancel</button>
+
+        <ng-container *ngIf="lastName.dirty || lastName.invalid || firstName.invalid || firstName.dirty || email.invalid|| email.dirty || password.invalid|| password.dirty; else elseTemplate">
+          <button class="updateButton" color="warn" mat-flat-button  [mat-dialog-close]="true" type="submit" (click)="onSubmit()"  [disabled]="!userForm.valid">Update</button>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <button mat-button class="updatebtn" [disabled]="userForm.valid">Update</button>
+
+        </ng-template>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+</form>

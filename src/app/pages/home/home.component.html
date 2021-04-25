@@ -1,0 +1,45 @@
+
+<div class="coupons" >
+
+  <mat-card class="example-card" *ngFor="let coupon of coupons">
+    <mat-card-header>
+      <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,600;0,700;1,300&family=Poppins:wght@500&display=swap" rel="stylesheet">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{coupon.title}}</mat-card-title>
+      <mat-card-subtitle> Price - ${{coupon.price}}</mat-card-subtitle>
+    </mat-card-header>
+    <hr>
+    <img mat-card-image src="../../../assets/images/pngtree-business-cost-reduction-icon-money-dollar-decrease-symbol-scissors-png-image_448244.jpg" width="1" height="430" alt="Photo of a Shiba Inu">
+
+    <mat-card-content class="desc">
+      <hr >
+      {{coupon.description}}
+      <hr>
+    </mat-card-content>
+    <mat-card-actions>
+      <section class="container">
+
+        <button data-hover="click me!" *ngIf="securityService.isCustomer()" (click)="purchaseCoupon(coupon)"><div>Buy now!</div></button>
+        <button *ngIf="!securityService.isCustomer()" disabled><div>Login to purchase!</div></button>
+      </section>
+    </mat-card-actions>
+  </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<!--
+<iframe src="https://giphy.com/embed/T8Dhl1KPyzRqU" id="gif" width="480" height="330"  class="giphy-embed" allowFullScreen>
+</iframe> -->
+
