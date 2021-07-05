@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { InfoCustomerComponent } from './components/info-customer/info-customer.component';
 
+
 const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'admin',component:AdminComponent,canActivate: [AuthGuard]},

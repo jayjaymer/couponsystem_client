@@ -14,7 +14,7 @@ import { AdminService } from './../../services/admin.service';
 
 import { Customer } from './../../models/Customer';
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -61,14 +61,8 @@ displayedColumnsCoupon: string[] =[
   'description',
   'amount',
   'price',
-  'startDate',
-  'endDate',
-  'image',
   'action'
 ];
-
-
-
 
   dataSourceCustomer: MatTableDataSource<Customer[]>;
   dataSourceCompany: MatTableDataSource<Company[]>;
@@ -87,7 +81,8 @@ displayedColumnsCoupon: string[] =[
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,
-    private getOneInfoCustomerService: GetOneInfoCustomerService
+    private getOneInfoCustomerService: GetOneInfoCustomerService,
+    private changeDetectorRefs: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -122,7 +117,34 @@ displayedColumnsCoupon: string[] =[
 
   }
 
+// refresh components
 
+refreshCustomers(){
+  this.adminService.getAllCustomers().subscribe(coupons => {this.dataSourceCoupon = new MatTableDataSource(coupons);
+    this.changeDetectorRefs.detectChanges();
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['admin']);});},
+  error => {});
+}
+
+refreshCompanies(){
+  this.adminService.getAllCompanies().subscribe(coupons => {this.dataSourceCoupon = new MatTableDataSource(coupons);
+    this.changeDetectorRefs.detectChanges();
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['admin']);}
+      );}
+      ,
+  error => {});
+}
+
+
+refreshCoupons(){
+  this.adminService.getAllCoupons().subscribe(coupons => {this.dataSourceCoupon = new MatTableDataSource(coupons);
+    this.changeDetectorRefs.detectChanges();
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['admin']);});},
+  error => {});
+}
 
 
   // filters
@@ -164,12 +186,9 @@ displayedColumnsCoupon: string[] =[
         .subscribe((res) => {
           if (res) {
             this.adminService.deleteCustomer(id).subscribe((response) => {},(error) => {})
-
             this.snackBar.open('Customer '+id+' was Deleted! ','OK!',{duration: 2500});
+            this.refreshCustomers();
           }
-          this.adminService.getAllCustomers().subscribe(
-            customers => this.dataSourceCustomer = new MatTableDataSource(customers),
-            error => {});
         });
       }
 
@@ -283,12 +302,9 @@ displayedColumnsCoupon: string[] =[
       .subscribe((res) => {
         if (res) {
           this.adminService.deleteCompany(id).subscribe((response) => {},(error) => {});
-
           this.snackBar.open('Company '+id+' was Deleted! ','OK!',{duration: 2500});
+          this.refreshCompanies();
         }
-        this.adminService.getAllCompanies().subscribe(
-          companies => this.dataSourceCompany = new MatTableDataSource(companies),
-          error => {});
       });
 
   }

@@ -50,25 +50,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-
-//   login(){
-//     this.adminService.login(this.email, this.password).subscribe(
-//       (res) => {
-//         console.log("test");
-//         localStorage.setItem("Token", res.headers.get('Token') );
-//         localStorage.setItem("Type", "admin");
-//         localStorage.setItem("LoggedIn", "true");
-//         this.securityService.update();
-//         this.clientTypeService.update();
-//         this.router.navigate(['/home'])
-
-
-
-
-//   }, (error) => {})
-//   }
-// }
-
   public login() {
     const typeTemp = this.type;
     const emailTemp = this.email;

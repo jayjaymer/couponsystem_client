@@ -15,7 +15,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class CustomerComponent implements OnInit {
 
-  public couponsColumns: string[] = ['id', 'title','category','amount' ,'price' ];
+  public couponsColumns: string[] = ['id', 'title','category' ,'price' ];
   public customer:Customer;
   public coupon: Coupon;
   public dataSourceCoupon: MatTableDataSource<Coupon>=null;

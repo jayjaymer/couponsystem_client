@@ -8,7 +8,7 @@ import { SecurityService } from './../../services/security.service';
 import { CompanyService } from './../../services/company.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { DataSource } from '@angular/cdk/table';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -48,7 +48,8 @@ public couponsColumns: string[] = ['id', 'title','category','amount' ,'price' ,'
     private dialog: MatDialog,
     private securityService:SecurityService,
     private clientTypeService: ClientTypeService,
-    private getOneInfoCustomerService:GetOneInfoCustomerService) { }
+    private getOneInfoCustomerService:GetOneInfoCustomerService,
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
 
   ngOnInit(): void {
@@ -57,13 +58,22 @@ public couponsColumns: string[] = ['id', 'title','category','amount' ,'price' ,'
     this.getCompanyCoupons();
     this.getOneCompany(this.getOneInfoCustomerService.companyID);
 
+  }
 
+  refresh(){
+    this.companyService.getCompanyCoupons().subscribe(coupons => {this.dataSourceCoupon = new MatTableDataSource(coupons);
+      this.changeDetectorRefs.detectChanges();
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['company']);});},
+    error => {});
 
   }
 
 
 
+
 // filters
+
 
 
 applyFilterCoupons(event: Event) {
@@ -96,7 +106,6 @@ applyFilterCoupons(event: Event) {
 
   openAddCouponDialog(){
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.height = "60%";
     dialogConfig.width = "25%";
@@ -121,13 +130,12 @@ applyFilterCoupons(event: Event) {
       .subscribe((res) => {
         if (res) {
           this.companyService.deleteCoupon(id).subscribe((response) => {},(error) => {});
-
           this.snackBar.open('Coupon '+id+' was Deleted! ','OK!',{duration: 2500});
+          this.refresh();
         }
-        this.companyService.getCompanyCoupons().subscribe(
-          coupons => this.dataSourceCoupon = new MatTableDataSource(coupons),
-          error => {});
-      });
+        }
+        );
+
 
   }
 
@@ -144,38 +152,10 @@ applyFilterCoupons(event: Event) {
     const dialogRef = this.dialog.open(UpdateCouponComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.adminService.getAllCompanies().subscribe(
-          coupons => this.dataSourceCoupon = new MatTableDataSource(coupons),
-          error => {console.log(error);
-          }
-          )
+        this.companyService.getCompanyCoupons().subscribe(coupons => this.dataSourceCoupon = new MatTableDataSource(coupons),error => console.error(error)
+         )
+
         }
-    })
-  }
-
-
-  openInfoCouponDialog(id: number){
-
-    this.getOneInfoCustomerService.couponID = id;
-    console.log(id);
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.height = "50%";
-    dialogConfig.width = "60%";
-    const dialogRef = this.dialog.open(InfoCouponComponent, dialogConfig);
-    dialogRef.afterOpened().subscribe(res =>{
-      this.companyService.getCompanyDetails();console.log(res);
-
-    })
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.companyService.getCompanyCoupons().subscribe(
-          coupons => {this.dataSourceCoupon = new MatTableDataSource(coupons)},
-          error => {console.log(error);
-          }
-        )
-      }
     })
   }
 

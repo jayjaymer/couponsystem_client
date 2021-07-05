@@ -9,15 +9,14 @@ table {
   width: 100%;
 }
 
+
+
 .example-container {
   min-width: 100px;
-  max-width: 1500px;
-  margin-left: 500px;
+  max-width: 1000px;
+  margin-left: 750px;
 }
-.topRow{
-  margin-left: 600px;
-  display: inline-block;
-}
+
 .filterText {
   text-align: center;
 }

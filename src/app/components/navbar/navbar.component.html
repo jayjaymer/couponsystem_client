@@ -19,7 +19,7 @@
           <mat-icon style="color: white;">perm_identity</mat-icon>
         </button>
         <ng-container *ngIf="isLoggedIn(); else elseTemplate">
-          <button  (click)="isLogged()" mat-flat-button color="warn" class="logout" [routerLink]="['/home']" routerLinkActive="router-link-active">Logout</button>
+          <button  (click)="isLogged()" mat-flat-button color="warn" class="logout">Logout</button>
         </ng-container>
         <ng-template #elseTemplate>
           <button mat-flat-button color="warn" class="login" [routerLink]="['/login']" routerLinkActive="router-link-active" >

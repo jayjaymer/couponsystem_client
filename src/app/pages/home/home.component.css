@@ -2,6 +2,11 @@ iframe{
   position: relative;
   margin-left: 1030px;
 }
+
+.mat-card {
+  padding: 16px;
+  border-radius: 40px;
+}
 .example-card {
   width: 400px;
   align-content: center;
@@ -24,10 +29,10 @@ iframe{
 
 
 .mat-card-header{
-  text-align: center;
-    top: 50%;
-    left: 50%;
-
+    text-align: center;
+      top: 50%;
+      left: 50%;
+    display: inline;
 }
 .mat-card-title{
   font-family: 'Exo 2', sans-serif;
@@ -55,7 +60,6 @@ font-family: 'Poppins', sans-serif;
 }
 .container{
   margin-left: 90px;
-
 }
 
 

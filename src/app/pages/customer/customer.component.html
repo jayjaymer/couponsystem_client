@@ -10,13 +10,6 @@
 
   <div class="table">
 
-    <div class="topRow">
-      <mat-form-field class="filterBox">
-        <mat-label>Search</mat-label>
-        <input matInput (keyup)="applyFilterCoupons($event)" placeholder="Ex. 123" #input>
-      </mat-form-field>
-    </div>
-
   <div class="example-container">
     <mat-table class="mat-elevation-z8" [dataSource]="dataSourceCoupon" matSort >
 
@@ -33,11 +26,6 @@
       <ng-container matColumnDef="category">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="amount">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Amount </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
       </ng-container>
 
 

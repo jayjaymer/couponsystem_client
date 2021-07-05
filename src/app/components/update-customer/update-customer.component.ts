@@ -32,8 +32,7 @@ export class UpdateCustomerComponent implements OnInit {
   }
   public updateCustomer(id: number):void{
     this.adminService.getOneCustomer(id)
-    .subscribe(data => {this.customer  = data;
-    console.log("customer details");},
+    .subscribe(data => {this.customer  = data;},
     err => {console.log(err.error);
     });
 
@@ -49,7 +48,7 @@ export class UpdateCustomerComponent implements OnInit {
   }
 
   onChangeEvent(event: any){
-    console.log("fsdghs");
+
   }
 
 

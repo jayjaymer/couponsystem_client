@@ -9,7 +9,6 @@ export class GetOneInfoCustomerService {
   customerID: number;
   companyID: number;
   couponID: number;
-
   coupon: Coupon;
 
 

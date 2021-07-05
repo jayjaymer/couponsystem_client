@@ -40,18 +40,19 @@ export class HomeComponent implements OnInit {
     this.yesNoDiagService
     .openConfirmDialog('Are you sure you want to purchase a coupon? #' +coupon.id)
     .afterClosed()
-        .subscribe((res) => {
-          if (res) {
+    .subscribe((res) => {
+    if (res) {
     this.customerService.purchaseCoupon(coupon).subscribe(
       (res)=>{console.log(res);
       },
-      (err)=>{console.log(err)});
-      this.router.navigate(['/customer']);
-      this.getAllCoupon();
-      this.snackBar.open('Congratulations! You have purchased A coupon. ','OK',{duration: 2500});
-
-  }
-}
-);
+      (err)=>{
+        if(err.status=== 201){
+          this.router.navigate(['/customer']);
+          this.getAllCoupon();
+          this.snackBar.open('Congratulations! You have purchased A coupon. ','OK',{duration: 2500});
+        }else{
+          this.snackBar.open('Sorry, You cant purchase this coupon','OK',{duration: 2500});
+        }});
+      }});
   }
 }

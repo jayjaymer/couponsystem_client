@@ -29,28 +29,23 @@
 
 
 <div class="example-container">
-  <mat-table  [dataSource]="dataSourceCoupon" class="mat-elevation-z8" matSort>
+  <table mat-table  [dataSource]="dataSourceCoupon" class="mat-elevation-z8" matSort>
 
-    <!-- Position Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
     </ng-container>
-    <!-- Weight Column -->
 
-    <!-- Name Column -->
     <ng-container matColumnDef="category">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="amount">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Amount </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
@@ -77,11 +72,6 @@
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
           </button>
-          <button mat-menu-item (click)="openInfoCouponDialog(row.id)" >
-
-            <mat-icon>info</mat-icon>
-            <span>Info</span>
-          </button>
         </mat-menu>
 
       </mat-cell>
@@ -98,7 +88,7 @@
             <tr class="mat-row" *matNoDataRow>
               <td class="mat-cell" colspan="4">No data matching the filter "{{input.values}}"</td>
             </tr>
-  </mat-table>
+  </table>
 </div>
 
 

@@ -8,20 +8,15 @@
     </div>
 
     <div class="coupons">
-
-
-        <div *ngFor="let item of customer.coupons" class="coupon">
-            <span> {{item.id}}</span>
-            <span> {{item.companyID}}</span>
-            <span> {{item.title}}</span>
-            <span> {{item.startDate | date }}</span>
-            <span> {{item.endDate | date}}</span>
-            <span> {{item.amount }}</span>
-            <span> {{item.category}}</span>
-            <span> {{item.description}}</span>
-            <span> {{item.price}}</span>
-            <span> {{item.image}}</span>
-        </div>
+      <table *ngFor="let item of customer.coupons" class="coupon">
+        <th>ID  </th>
+        <span> {{item.id}}</span>
+        <span> {{item.title}}</span>
+        <span> {{item.startDate | date }}</span>
+        <span> {{item.endDate | date}}</span>
+        <span> {{item.description}}</span>
+          <span> {{item.price}}</span>
+    </table>
     </div>
 
 

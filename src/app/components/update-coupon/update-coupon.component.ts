@@ -40,11 +40,6 @@ this.companyService.updateCoupon(this.coupon).subscribe(
 }
 
 onChangeEvent(event: any){
-  console.log("fsdghs");
-}
-
-public getOneCoupon(id: number){
-  this
 }
 
 
